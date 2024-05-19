@@ -1,1 +1,1 @@
-# open-piggy-legacy
+# Open Piggy Legacy

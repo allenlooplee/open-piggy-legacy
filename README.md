@@ -6,11 +6,11 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 ### Use Cases
 
-1. **Lump Sum Legacy**: The owner deploys the smart contract with the initial funds, a beneficiary address, and a daily check-in interval. Then the owner checks in every day. The beneficiary can view the balance of the smart contract and the owner's last check-in time. If the owner doesn't check in some day, the beneficiary will be able to withdraw the balance of the smart contract.
-2. **Regular Savings Legacy**: The owner deploys the smart contract with a beneficiary address and a weekly check-in interval. Then the owner checks in every week with some funds. The beneficiary can view the balance of the smart contract and the owner's last check-in time. If the owner doesn't check in some day within the check-in interval, the beneficiary will be able to withdraw the balance of the smart contract.
-3. **Legacy with Withdrawal Delay Period**: The owner deploys the smart contract with the initial funds, a beneficiary address, a daily check-in interval, and a 48-hour withdrawal delay period. Then the owner checks in every day. One day the beneficiary notices that the owner doesn't check in as expected. Then the beneficiary waits for 48 hours and withdraws the balance of the smart contract.
+1. **Lump Sum Legacy**: The owner deploys the smart contract with the initial funds, a beneficiary address, and a daily check-in interval. They then regularly check in every day. The beneficiary can view the balance and the owner's last check-in time. If the owner misses a check-in, the beneficiary can withdraw the funds.
+2. **Regular Savings Legacy**: The owner deploys the smart contract with a beneficiary address and a weekly check-in interval. They deposit funds each week. The beneficiary can view the balance and the owner's last check-in time. If the owner fails to check in within the interval, the beneficiary can withdraw the funds.
+3. **Legacy with Withdrawal Delay Period**: The owner deploys the smart contract with the initial funds, a beneficiary address, a daily check-in interval, and a 48-hour withdrawal delay period. They regularly check in every day. One day, they miss a check-in. After 48 hours, the beneficiary can withdraw the funds.
 
-### Members
+### Contract Members
 
 1. **owner variable**: The person or entity that deploys the smart contract and initially funds it.
 2. **beneficiary variable**: The person or entity designated by the owner as eligible to inherit the funds.

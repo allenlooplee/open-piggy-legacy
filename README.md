@@ -1,6 +1,6 @@
 # Open Piggy Legacy
 
-This smart contract allows a specified beneficiary to withdraw its balance when the owner stops checking in after a specified period of time.
+This smart contract allows a specified beneficiary to withdraw its balance when the owner stops checking in after a specified period of time. This smart contract, as well as its tests, was developed with Hardhat.
 
 ## Contract Design
 

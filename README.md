@@ -6,9 +6,9 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 ### Use Cases
 
-1. **Lump Sum Legacy**: The owner deploys the smart contract with the initial funds and a beneficiary address. They then regularly check in every day. The beneficiary can view the balance and the owner's last check-in time. If the owner misses a check-in, the beneficiary can withdraw the funds.
-2. **Regular Savings Legacy**: The owner deploys the smart contract with a beneficiary address. They regularly check in daily, with an additional fund transfer on Mondays. The beneficiary can view the balance and the owner's last check-in time. If the owner misses a day of checking in, the beneficiary can withdraw the funds.
-3. **Legacy with Withdrawal Delay Period**: The owner deploys the smart contract with the initial funds, a beneficiary address, and a 48-hour withdrawal delay period. They regularly check in every day. One day, they miss a check-in. After 48 hours, the beneficiary can withdraw the funds.
+1. **Lump Sum Legacy**: The owner deploys the smart contract with the initial funds and a beneficiary address. They then regularly check in every day. The beneficiary can view the balance and the owner's last check-in time. If the owner misses a check-in, the beneficiary can withdraw the funds the next day.
+2. **Regular Savings Legacy**: The owner deploys the smart contract with a beneficiary address. They regularly check in daily, with an additional fund transfer on Mondays. The beneficiary can view the balance and the owner's last check-in time. If the owner misses a check-in, the beneficiary can withdraw the funds the next day.
+3. **Legacy with Withdrawal Delay Period**: The owner deploys the smart contract with the initial funds, a beneficiary address, and a one-day withdrawal delay period. They regularly check in every day. One day, they miss a check-in. The beneficiary can withdraw the funds the day after the next day.
 
 ### Contract Members
 
@@ -43,6 +43,28 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
      - Expect the balance of the smart contract to be the same as what was there beforehand plus any new funds that have 
 been received.
 3. **Withdrawal**
+   - It should withdraw the balance of the smart contract the day after tomorrow when the owner misses a check-in today.
+     - Expect the lastCheckInTime variable to match today's date (T).
+     - Expect the current time to match the day after tomorrow's date (T + 2).
+     - Expect the canWithdraw function to return true.
+     - Expect the balance of the smart contract to be zero.
+     - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
+   - It should revert the withdrawal tomorrow when the owner checks in today.
+     - Expect the lastCheckInTime variable to match today's date (T).
+     - Expect the current time to match tomorrow's date (T + 1).
+     - Expect the canWithdraw function to return false.
+     - Expect the call to the withdraw function to be reverted.
+   - It should withdraw the balance of the smart contract two days after tomorrow when the owner misses a check-in today with a one-day withdrawal delay period.
+     - Expect the lastCheckInTime variable to match today's date (T).
+     - Expect the current time to match two day after tomorrow's date (T + 2 + 1).
+     - Expect the canWithdraw function to return true.
+     - Expect the balance of the smart contract to be zero.
+     - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
+   - It should revert the withdrawal the day after tomorrow when the owner misses a check-in today with a one-day withdrawal delay period.
+     - Expect the lastCheckInTime variable to match today's date (T).
+     - Expect the current time to match the day after tomorrow's date (T + 1 + 1).
+     - Expect the canWithdraw function to return false.
+     - Expect the call to the withdraw function to be reverted.
 4. **Cancellation**
 
 ### References

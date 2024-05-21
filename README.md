@@ -35,3 +35,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 2. **Checking in**
 3. **Withdrawal**
 4. **Cancellation**
+
+### References
+
+1. [Time-dependent tests with Hardhat?](https://ethereum.stackexchange.com/questions/86633/time-dependent-tests-with-hardhat/92906)

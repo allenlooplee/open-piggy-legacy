@@ -25,7 +25,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 ### Test Cases
 
-1. Deploy
-2. Check in
-3. Withdraw
-4. Cancel
+1. **Deployment**
+2. **Checking in**
+3. **Withdrawal**
+4. **Cancellation**

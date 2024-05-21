@@ -22,3 +22,10 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 8. **cancel function**: This function allows the owner to terminate the smart contract at any time, effectively cancelling the beneficiary's eligibility for inheritance. Upon cancellation, the balance of the smart contract is returned to the owner.
 
 ## Unit Testing
+
+### Test Cases
+
+1. Deploy
+2. Check in
+3. Withdraw
+4. Cancel

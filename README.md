@@ -26,12 +26,12 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 ### Test Cases
 
 1. **Deployment**
-   - It should set the contract to the correct state when the owner sucessfully deploys the smart contract.
-     - The owner variable should be the address of the owner.
-     - The beneficiary variable should be the address of the beneficiary.
-     - The lastCheckInTime variable should be the timestamp of the owner's first check-in.
-     - The canWithdraw function should return false.
-     - The balance of the smart contract should match the amount initially sent by the owner.
+   - It should deploy and set the state correctly.
+     - Expect the owner variable to be the address of the owner.
+     - Expect the beneficiary variable to be the address of the beneficiary.
+     - Expect the lastCheckInTime variable to match today's date.
+     - Expect the canWithdraw function to return false.
+     - Expect the balance of the smart contract to be the amount sent by the owner initially.
 2. **Checking in**
 3. **Withdrawal**
 4. **Cancellation**

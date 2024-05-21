@@ -33,6 +33,15 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
      - Expect the canWithdraw function to return false.
      - Expect the balance of the smart contract to be the amount sent by the owner initially.
 2. **Checking in**
+   - It should check in correctly.
+     - Expect the lastCheckInTime variable to match today's date.
+     - Expect the canWithdraw function to return false.
+     - Expect the balance of the smart contract to be the same as what was there beforehand.
+   - It should check in and receive the funds correctly.
+     - Expect the lastCheckInTime variable to match today's date.
+     - Expect the canWithdraw function to return false.
+     - Expect the balance of the smart contract to be the same as what was there beforehand plus any new funds that have 
+been received.
 3. **Withdrawal**
 4. **Cancellation**
 

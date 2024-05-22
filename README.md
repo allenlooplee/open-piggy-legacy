@@ -75,6 +75,10 @@ been received.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
 4. **Termination**
+   - It should revoke the smart contract when the owner terminate it.
+     - Expect the beneficiary variable to be zero.
+     - Expect the balance of the owner to be the same as what was there beforehand plus the balance of the smart contract.
+     - Expect the balance of the smart contract to be zero.
 
 ### References
 

@@ -25,6 +25,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 1. [`external` vs `public` best practices](https://ethereum.stackexchange.com/questions/19380/external-vs-public-best-practices)
 2. [What is the time zone of the Ethereum block chain?](https://ethereum.stackexchange.com/questions/68064/what-is-the-time-zone-of-the-ethereum-block-chain)
+3. [How do you work with Date and time on Ethereum platform](https://ethereum.stackexchange.com/questions/18192/how-do-you-work-with-date-and-time-on-ethereum-platform)
 
 ## Unit Testing
 

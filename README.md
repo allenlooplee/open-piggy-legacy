@@ -42,6 +42,10 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
      - Expect the canWithdraw function to return false.
      - Expect the balance of the smart contract to be the same as what was there beforehand plus any new funds that have 
 been received.
+   - It should revert when non-owner checks in.
+     - Expect the call to the checkIn function to be reverted.
+     - Expect the lastCheckInTime variable to be unchanged.
+     - Expect the balance of the smart contract to be unchanged.
 3. **Withdrawal**
    - It should withdraw the balance of the smart contract the day after tomorrow (T + 2) when the owner misses a check-in tomorrow (T + 1).
      - Expect the lastCheckInTime variable to match today's date (T).
@@ -72,6 +76,9 @@ been received.
      - Expect the lastCheckInTime variable after re-checking in to match the day after tomorrow's date (T + 2).
      - Expect the current time to match two day after tomorrow's date (T + 3).
      - Expect the canWithdraw function to return false.
+     - Expect the call to the withdraw function to be reverted.
+     - Expect the balance of the smart contract to be unchanged.
+   - It should revert when non-beneficiary withdraws.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
 4. **Termination**

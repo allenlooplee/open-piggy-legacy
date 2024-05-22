@@ -19,7 +19,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 5. **checkIn payable function**: This function allows the owner to check in every day, updating the lastCheckInTime variable and optionally sending additional funds.
 6. **canWithdraw view function**: This function returns whether the beneficiary is allowed to withdraw the balance, considering the current time in relation to the lastCheckInTime and the withdrawalDelayPeriod. This is a view function that allows the beneficiary to determine if they can withdraw without incurring gas costs.
 7. **withdraw function**: This function allows the beneficiary to retrieve the balance of the smart contract when the owner hasn't checked in if canWithdraw function returns true, indicating that the owner's period of inactivity has exceeded the allowed time.
-8. **cancel function**: This function allows the owner to terminate the smart contract at any time, effectively cancelling the beneficiary's eligibility for inheritance. Upon cancellation, the balance of the smart contract is returned to the owner.
+8. **terminate function**: This function allows the owner to terminate the contract at any time, revoking the beneficiary's inheritance eligibility and returning the remaining balance to the owner.
 
 ## Unit Testing
 
@@ -74,7 +74,7 @@ been received.
      - Expect the canWithdraw function to return false.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
-4. **Cancellation**
+4. **Termination**
 
 ### References
 

@@ -21,12 +21,13 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 7. **withdraw function**: This function allows the beneficiary to retrieve the balance of the smart contract when the owner hasn't checked in if canWithdraw function returns true, indicating that the owner's period of inactivity has exceeded the allowed time.
 8. **terminate function**: This function allows the owner to terminate the contract at any time, revoking the beneficiary's inheritance eligibility and returning the remaining balance to the owner.
 
-### Implementation Considerations
+### References
 
 1. [`external` vs `public` best practices](https://ethereum.stackexchange.com/questions/19380/external-vs-public-best-practices)
 2. [What is the time zone of the Ethereum block chain?](https://ethereum.stackexchange.com/questions/68064/what-is-the-time-zone-of-the-ethereum-block-chain)
 3. [How do you work with Date and time on Ethereum platform](https://ethereum.stackexchange.com/questions/18192/how-do-you-work-with-date-and-time-on-ethereum-platform)
 4. [Units and Globally Available Variables](https://docs.soliditylang.org/en/v0.8.26/units-and-global-variables.html)
+5. [What is selfdestruct in Solidity?](https://www.alchemy.com/overviews/selfdestruct-solidity)
 
 ## Unit Testing
 

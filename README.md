@@ -28,6 +28,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 3. [How do you work with Date and time on Ethereum platform](https://ethereum.stackexchange.com/questions/18192/how-do-you-work-with-date-and-time-on-ethereum-platform)
 4. [Units and Globally Available Variables](https://docs.soliditylang.org/en/v0.8.26/units-and-global-variables.html)
 5. [What is selfdestruct in Solidity?](https://www.alchemy.com/overviews/selfdestruct-solidity)
+6. [How to Understand tx.origin and msg.sender in Solidity](https://hackernoon.com/how-to-understand-txorigin-and-msgsender-in-solidity)
 
 ## Unit Testing
 

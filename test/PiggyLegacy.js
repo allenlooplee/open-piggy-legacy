@@ -1,7 +1,13 @@
 const {
     loadFixture,
+    time
   } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
-const { expect } = require("chai");
+
+const chai = require('chai');
+chai.use(require('chai-luxon'));
+const { expect } = chai;
+
+const { DateTime } = require('luxon');
 
 describe("PiggyLegacy", function() {
     async function deployLegacyFixture() {
@@ -20,6 +26,7 @@ describe("PiggyLegacy", function() {
 
             expect(await legacy.owner()).to.equal(owner.address);
             expect(await legacy.beneficiary()).to.equal(beneficiary.address);
+            expect(DateTime.fromSeconds(Number(await legacy.lastCheckInTime())).setZone("UTC")).to.be.sameDate(DateTime.utc())
             expect(await legacy.canWithdraw()).to.be.false;
             expect(await ethers.provider.getBalance(legacy.target)).to.equal(initialAmount);
         });

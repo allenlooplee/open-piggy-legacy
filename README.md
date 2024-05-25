@@ -99,3 +99,4 @@ been received.
 ### References
 
 1. [Time-dependent tests with Hardhat?](https://ethereum.stackexchange.com/questions/86633/time-dependent-tests-with-hardhat/92906)
+2. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)

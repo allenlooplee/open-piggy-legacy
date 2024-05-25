@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.25;
+pragma solidity ^0.8.24;
 
 contract PiggyLegacy {
     address public owner;
@@ -7,7 +7,7 @@ contract PiggyLegacy {
     uint256 public lastCheckInTime;
     uint256 private withdrawalDelayPeriod;
     
-    constructor(address _beneficiary, uint256 _withdrawalDelayPeriod) {
+    constructor(address _beneficiary, uint256 _withdrawalDelayPeriod) payable {
         owner = msg.sender;
         beneficiary = _beneficiary;
         withdrawalDelayPeriod = _withdrawalDelayPeriod;

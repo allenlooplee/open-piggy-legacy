@@ -14,7 +14,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 1. **owner variable**: The person or entity that deploys the smart contract and initially funds it.
 2. **beneficiary variable**: The person or entity designated by the owner as eligible to inherit the funds.
-3. **withdrawalDelayPeriod private variable**: This variable specifies the time period (in seconds) that the beneficiary must wait before withdrawing the balance after the owner has not checked in within a day. If set to 0, the beneficiary can withdraw at 00:00:00 on the day after the last check-in date. Otherwise, the beneficiary must wait for the specified number of seconds starting from 00:00:00 on the day after the last check-in date.
+3. **withdrawalDelayPeriod private variable**: This variable specifies the time period (in seconds) that the beneficiary must wait before withdrawing the balance after the owner has not checked in within a day. If set to 0, the beneficiary can withdraw at 00:00:00 on the day after the first missed check-in date. Otherwise, the beneficiary must wait for the specified number of seconds starting from 00:00:00 on the day after the first missed check-in date.
 4. **lastCheckInTime variable**: The timestamp of the last check-in.
 5. **checkIn payable function**: This function allows the owner to check in every day, updating the lastCheckInTime variable and optionally sending additional funds.
 6. **canWithdraw view function**: This function returns whether the beneficiary is allowed to withdraw the balance, considering the current time in relation to the lastCheckInTime and the withdrawalDelayPeriod. This is a view function that allows the beneficiary to determine if they can withdraw without incurring gas costs.

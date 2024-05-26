@@ -62,19 +62,16 @@ been received.
      - Expect the balance of the smart contract to be zero.
      - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
    - It should revert the withdrawal tomorrow (T + 1) when the owner checks in today (T).
-     - Expect the current time to match tomorrow's date (T + 1).
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return false.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
    - It should withdraw the balance of the smart contract two days after tomorrow (T + 3) when the owner misses a check-in tomorrow (T + 1) with a one-day withdrawal delay period.
-     - Expect the current time to match two day after tomorrow's date (T + 3).
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return true.
      - Expect the balance of the smart contract to be zero.
      - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
    - It should revert the withdrawal the day after tomorrow (T + 2) when the owner misses a check-in tomorrow (T + 1) with a one-day withdrawal delay period.
-     - Expect the current time to match the day after tomorrow's date (T + 2).
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return false.
      - Expect the call to the withdraw function to be reverted.
@@ -82,7 +79,6 @@ been received.
    - It should revert the withdrawal two days after tomorrow (T + 3) when the owner misses a check-in tomorrow (T + 1) but re-checks in the day after tomorrow (T + 2) with a one-day withdrawal delay period.
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the lastCheckInTime variable after re-checking in to match the day after tomorrow's date (T + 2).
-     - Expect the current time to match two day after tomorrow's date (T + 3).
      - Expect the canWithdraw function to return false.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
@@ -100,3 +96,4 @@ been received.
 1. [Time-dependent tests with Hardhat?](https://ethereum.stackexchange.com/questions/86633/time-dependent-tests-with-hardhat/92906)
 2. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)
 3. [Chai-Luxon](https://www.chaijs.com/plugins/chai-luxon/)
+4. [Hardhat Chai Matchers](https://hardhat.org/hardhat-chai-matchers/docs/overview)

@@ -44,11 +44,12 @@ contract PiggyLegacy {
 
         // Check if at least one full day has passed since the last check-in date
         if (currentDate - lastCheckInDate > 1) {
-            // Calculate the midnight timestamp for today
-            uint256 midnightToday = currentDate * 1 days;
+            // The delay starts at midnight (00:00) on the day after the first missed check-in date,
+            // which is the second day following the last check-in date.
+            uint256 delayStartTime = (lastCheckInDate + 2) * 1 days;
 
-            // Check if the current timestamp has passed the specified withdrawal delay period since midnight today
-            return block.timestamp >= midnightToday + withdrawalDelayPeriod;
+            // Check if the current timestamp has passed the specified withdrawal delay period since the delay start time.
+            return block.timestamp >= delayStartTime + withdrawalDelayPeriod;
         } else {
             return false;
         }

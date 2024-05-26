@@ -59,8 +59,8 @@ been received.
    - It should withdraw the balance of the smart contract the day after tomorrow (T + 2) when the owner misses a check-in tomorrow (T + 1).
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return true.
+     - Expect the balance of the smart contract to be added to the balance of beneficiary.
      - Expect the balance of the smart contract to be zero.
-     - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
    - It should revert the withdrawal tomorrow (T + 1) when the owner checks in today (T).
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return false.
@@ -69,8 +69,8 @@ been received.
    - It should withdraw the balance of the smart contract two days after tomorrow (T + 3) when the owner misses a check-in tomorrow (T + 1) with a one-day withdrawal delay period.
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return true.
+     - Expect the balance of the smart contract to be added to the balance of beneficiary.
      - Expect the balance of the smart contract to be zero.
-     - Expect the balance of the be beneficiary to be the same as what was there beforehand plus the balance of the smart contract.
    - It should revert the withdrawal the day after tomorrow (T + 2) when the owner misses a check-in tomorrow (T + 1) with a one-day withdrawal delay period.
      - Expect the lastCheckInTime variable to match today's date (T).
      - Expect the canWithdraw function to return false.

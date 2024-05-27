@@ -156,4 +156,18 @@ describe("PiggyLegacy", function() {
             expect(await ethers.provider.getBalance(legacy.target)).to.equal(initialAmount);
         });
     });
+
+    describe("Termination", function() {
+        it("should revoke the smart contract when the owner terminate it", async function() {
+            const { legacy, owner, beneficiary, initialAmount } = await loadFixture(deployLegacyFixture);
+
+            await expect(legacy.terminate()).to.changeEtherBalance(owner, initialAmount);
+            expect(await legacy.isActive()).to.be.false;
+            expect(await ethers.provider.getBalance(legacy.target)).to.equal(0);
+            await expect(legacy.checkIn()).to.be.revertedWith("Contract already terminated");
+            await expect(legacy.terminate()).to.be.revertedWith("Contract already terminated");
+            await expect(legacy.connect(beneficiary).canWithdraw()).to.be.revertedWith("Contract already terminated");
+            await expect(legacy.connect(beneficiary).withdraw()).to.be.revertedWith("Contract already terminated");
+        });
+    });
 });

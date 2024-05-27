@@ -6,12 +6,14 @@ contract PiggyLegacy {
     address public beneficiary;
     uint256 public lastCheckInTime;
     uint256 private withdrawalDelayPeriod;
+    bool public isActive;
     
     constructor(address _beneficiary, uint256 _withdrawalDelayPeriod) payable {
         owner = msg.sender;
         beneficiary = _beneficiary;
         withdrawalDelayPeriod = _withdrawalDelayPeriod;
         lastCheckInTime = block.timestamp;
+        isActive = true;
     }
 
     modifier onlyOwner() {
@@ -19,22 +21,23 @@ contract PiggyLegacy {
         _;
     }
 
-    function checkIn() external payable onlyOwner {
-        require(beneficiary != address(0), "Contract already terminated");
+    modifier onlyActive() {
+        require(isActive == true, "Contract already terminated");
+        _;
+    }
 
+    function checkIn() external payable onlyActive onlyOwner {
         lastCheckInTime = block.timestamp;
     }
 
-    function terminate() external onlyOwner {
-        require(beneficiary != address(0), "Contract already terminated");
+    function terminate() external onlyActive onlyOwner {
+        isActive = false;
 
         (bool success, ) = owner.call{value: address(this).balance}("");
         require(success, "Withdrawal failed");
-        
-        beneficiary = address(0);
     }
 
-    function canWithdraw() public view returns(bool) {
+    function canWithdraw() public view onlyActive returns (bool) {
         if (msg.sender != beneficiary) {
             return false;
         }
@@ -55,7 +58,7 @@ contract PiggyLegacy {
         }
     }
 
-    function withdraw() external {
+    function withdraw() external onlyActive {
         require(msg.sender == beneficiary, "Beneficiary only");
         require(canWithdraw(), "Withdrawal not allowed");
 

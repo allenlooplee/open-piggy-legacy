@@ -1,6 +1,6 @@
 # Open Piggy Legacy
 
-This smart contract allows a specified beneficiary to withdraw its balance when the owner stops checking in after a specified period of time. This smart contract, as well as its tests, was developed with Hardhat.
+This smart contract allows a specified beneficiary to withdraw its balance when the owner has not checked in for at least a full day. This smart contract, as well as its tests, was developed with Hardhat.
 
 ## Contract Design
 
@@ -19,7 +19,7 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 5. **isActive public variable**: This boolean variable is initially set to true and remains true until the owner calls the terminate function to terminate the smart contract. All other functions in the smart contract require this variable to be true to execute successfully.
 6. **checkIn external payable function**: This function allows the owner to check in every day, updating the lastCheckInTime variable and optionally sending additional funds.
 7. **canWithdraw public view function**: This function returns whether the beneficiary is allowed to withdraw the balance, considering the current time in relation to the lastCheckInTime and the withdrawalDelayPeriod. This is a view function that allows the beneficiary to determine if they can withdraw without incurring gas costs.
-8. **withdraw external function**: This function allows the beneficiary to retrieve the balance of the smart contract when the owner hasn't checked in if canWithdraw function returns true, indicating that the owner's period of inactivity has exceeded the allowed time.
+8. **withdraw external function**: This function allows the beneficiary to retrieve the balance of the smart contract if canWithdraw function returns true, indicating that the owner has not checked in for at least a full day.
 9. **terminate external function**: This function allows the owner to terminate the contract at any time, revoking the beneficiary's inheritance eligibility and returning the remaining balance to the owner.
 
 ### References

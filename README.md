@@ -123,7 +123,7 @@ When deploying the PiggyLegacy contract with Hardhat Ignition, follow the below 
 2. Change the values of `beneficiary`, `withdrawalPeriod` and `initialAmount` in the module and save the changes.
 3. Run `npx hardhat ignition deploy ./ignition/modules/PiggyLegacy.js` in the terminal under the project folder.
 
-This will deploy the smart contract to the Hardhat Network running in your local machine.
+This will deploy the smart contract to an in-memory instance of Hardhat Network on your local machine.
 
 ### References
 

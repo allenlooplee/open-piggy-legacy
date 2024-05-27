@@ -9,6 +9,7 @@
   "author": "Allen Lee",
   "license": "MIT",
   "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.4",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "hardhat": "^2.22.4"
   },

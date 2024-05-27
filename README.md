@@ -88,8 +88,8 @@ been received.
      - Expect the balance of the smart contract to be unchanged.
 4. **Termination**
    - It should revoke the smart contract when the owner terminate it.
-     - Expect the isActive variable to be false.
      - Expect the balance of the smart contract to be added to the balance of owner.
+     - Expect the isActive variable to be false.
      - Expect the balance of the smart contract to be zero.
 
 ### References

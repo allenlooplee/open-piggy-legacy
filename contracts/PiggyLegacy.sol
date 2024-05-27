@@ -6,12 +6,14 @@ contract PiggyLegacy {
     address public beneficiary;
     uint256 public lastCheckInTime;
     uint256 private withdrawalDelayPeriod;
+    bool public isActive;
     
     constructor(address _beneficiary, uint256 _withdrawalDelayPeriod) payable {
         owner = msg.sender;
         beneficiary = _beneficiary;
         withdrawalDelayPeriod = _withdrawalDelayPeriod;
         lastCheckInTime = block.timestamp;
+        isActive = true;
     }
 
     modifier onlyOwner() {
@@ -19,22 +21,23 @@ contract PiggyLegacy {
         _;
     }
 
-    function checkIn() external payable onlyOwner {
-        require(beneficiary != address(0), "Contract already terminated");
+    modifier onlyActive() {
+        require(isActive == true, "Contract already terminated");
+        _;
+    }
 
+    function checkIn() external payable onlyActive onlyOwner {
         lastCheckInTime = block.timestamp;
     }
 
-    function terminate() external onlyOwner {
-        require(beneficiary != address(0), "Contract already terminated");
+    function terminate() external onlyActive onlyOwner {
+        isActive = false;
 
         (bool success, ) = owner.call{value: address(this).balance}("");
         require(success, "Withdrawal failed");
-        
-        beneficiary = address(0);
     }
 
-    function canWithdraw() public view returns(bool) {
+    function canWithdraw() public view onlyActive returns (bool) {
         if (msg.sender != beneficiary) {
             return false;
         }
@@ -44,17 +47,18 @@ contract PiggyLegacy {
 
         // Check if at least one full day has passed since the last check-in date
         if (currentDate - lastCheckInDate > 1) {
-            // Calculate the midnight timestamp for today
-            uint256 midnightToday = currentDate * 1 days;
+            // The delay starts at midnight (00:00) on the day after the first missed check-in date,
+            // which is the second day following the last check-in date.
+            uint256 delayStartTime = (lastCheckInDate + 2) * 1 days;
 
-            // Check if the current timestamp has passed the specified withdrawal delay period since midnight today
-            return block.timestamp >= midnightToday + withdrawalDelayPeriod;
+            // Check if the current timestamp has passed the specified withdrawal delay period since the delay start time.
+            return block.timestamp >= delayStartTime + withdrawalDelayPeriod;
         } else {
             return false;
         }
     }
 
-    function withdraw() external {
+    function withdraw() external onlyActive {
         require(msg.sender == beneficiary, "Beneficiary only");
         require(canWithdraw(), "Withdrawal not allowed");
 

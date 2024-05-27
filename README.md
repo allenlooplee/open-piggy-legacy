@@ -91,6 +91,10 @@ been received.
      - Expect the balance of the smart contract to be added to the balance of owner.
      - Expect the isActive variable to be false.
      - Expect the balance of the smart contract to be zero.
+     - Expect the call to the checkIn function by the owner to be reverted.
+     - Expect the call to the terminate function by the owner to be reverted.
+     - Expect the call to the canWithdraw function by the beneficiary to be reverted.
+     - Expect the call to the withdraw function by the beneficiary to be reverted.
 
 ### References
 

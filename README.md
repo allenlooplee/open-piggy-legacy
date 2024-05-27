@@ -112,3 +112,22 @@ been received.
 2. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)
 3. [Chai-Luxon](https://www.chaijs.com/plugins/chai-luxon/)
 4. [Hardhat Chai Matchers](https://hardhat.org/hardhat-chai-matchers/docs/overview)
+
+## Deployment
+
+### Hardhat Ignition
+
+When deploying the PiggyLegacy contract with Hardhat Ignition, follow the below steps:
+
+1. Open ./ignition/modules/PiggyLegacy.js file.
+2. Change the values of `beneficiary`, `withdrawalPeriod` and `initialAmount` in the module and save the changes.
+3. Run `npx hardhat ignition deploy ./ignition/modules/PiggyLegacy.js` in the terminal under the project folder.
+
+This will deploy the smart contract to the Hardhat Network running in your local machine.
+
+### References
+
+1. [Quick start](https://hardhat.org/ignition/docs/getting-started#quick-start)
+2. [Deploying your contracts](https://hardhat.org/hardhat-runner/docs/guides/deploying)
+3. [Deploying to a live network](https://hardhat.org/tutorial/deploying-to-a-live-network)
+

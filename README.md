@@ -87,7 +87,7 @@ been received.
      - Expect the call to the withdraw function to be reverted.
      - Expect the balance of the smart contract to be unchanged.
 4. **Termination**
-   - It should revoke the smart contract when the owner terminate it.
+   - It should revoke the smart contract when the owner terminates it.
      - Expect the balance of the smart contract to be added to the balance of owner.
      - Expect the isActive variable to be false.
      - Expect the balance of the smart contract to be zero.
@@ -95,6 +95,10 @@ been received.
      - Expect the call to the terminate function by the owner to be reverted.
      - Expect the call to the canWithdraw function by the beneficiary to be reverted.
      - Expect the call to the withdraw function by the beneficiary to be reverted.
+   - It should revert when non-owner terminates it.
+     - Expect the call to the terminate function to be reverted.
+     - Expect the isActive variable to be true.
+     - Expect the balance of the smart contract to be unchanged.
 
 ### Implementation Considerations
 

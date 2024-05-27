@@ -130,4 +130,5 @@ This will deploy the smart contract to an in-memory instance of Hardhat Network 
 1. [Quick start](https://hardhat.org/ignition/docs/getting-started#quick-start)
 2. [Deploying your contracts](https://hardhat.org/hardhat-runner/docs/guides/deploying)
 3. [Deploying to a live network](https://hardhat.org/tutorial/deploying-to-a-live-network)
+4. [Configuration variables](https://hardhat.org/hardhat-runner/docs/guides/configuration-variables)
 

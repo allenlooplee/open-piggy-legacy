@@ -12,14 +12,15 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 ### Contract Members
 
-1. **owner variable**: The person or entity that deploys the smart contract and initially funds it.
-2. **beneficiary variable**: The person or entity designated by the owner as eligible to inherit the funds.
+1. **owner public variable**: The person or entity that deploys the smart contract and initially funds it.
+2. **beneficiary public variable**: The person or entity designated by the owner as eligible to inherit the funds.
 3. **withdrawalDelayPeriod private variable**: This variable specifies the time period (in seconds) that the beneficiary must wait before withdrawing the balance after the owner has not checked in within a day. If set to 0, the beneficiary can withdraw at 00:00:00 on the day after the first missed check-in date. Otherwise, the beneficiary must wait for the specified number of seconds starting from 00:00:00 on the day after the first missed check-in date.
-4. **lastCheckInTime variable**: The timestamp of the last check-in.
-5. **checkIn payable function**: This function allows the owner to check in every day, updating the lastCheckInTime variable and optionally sending additional funds.
-6. **canWithdraw view function**: This function returns whether the beneficiary is allowed to withdraw the balance, considering the current time in relation to the lastCheckInTime and the withdrawalDelayPeriod. This is a view function that allows the beneficiary to determine if they can withdraw without incurring gas costs.
-7. **withdraw function**: This function allows the beneficiary to retrieve the balance of the smart contract when the owner hasn't checked in if canWithdraw function returns true, indicating that the owner's period of inactivity has exceeded the allowed time.
-8. **terminate function**: This function allows the owner to terminate the contract at any time, revoking the beneficiary's inheritance eligibility and returning the remaining balance to the owner.
+4. **lastCheckInTime public variable**: The timestamp of the last check-in. This is a Unix timestamp.
+5. **isActive public variable**: This boolean variable is initially set to true and remains true until the owner calls the terminate function to terminate the smart contract. All other functions in the smart contract require this variable to be true to execute successfully.
+6. **checkIn external payable function**: This function allows the owner to check in every day, updating the lastCheckInTime variable and optionally sending additional funds.
+7. **canWithdraw public view function**: This function returns whether the beneficiary is allowed to withdraw the balance, considering the current time in relation to the lastCheckInTime and the withdrawalDelayPeriod. This is a view function that allows the beneficiary to determine if they can withdraw without incurring gas costs.
+8. **withdraw external function**: This function allows the beneficiary to retrieve the balance of the smart contract when the owner hasn't checked in if canWithdraw function returns true, indicating that the owner's period of inactivity has exceeded the allowed time.
+9. **terminate external function**: This function allows the owner to terminate the contract at any time, revoking the beneficiary's inheritance eligibility and returning the remaining balance to the owner.
 
 ### References
 
@@ -87,8 +88,8 @@ been received.
      - Expect the balance of the smart contract to be unchanged.
 4. **Termination**
    - It should revoke the smart contract when the owner terminate it.
-     - Expect the beneficiary variable to be zero.
-     - Expect the balance of the owner to be the same as what was there beforehand plus the balance of the smart contract.
+     - Expect the isActive variable to be false.
+     - Expect the balance of the smart contract to be added to the balance of owner.
      - Expect the balance of the smart contract to be zero.
 
 ### References

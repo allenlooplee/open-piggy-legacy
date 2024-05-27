@@ -96,6 +96,16 @@ been received.
      - Expect the call to the canWithdraw function by the beneficiary to be reverted.
      - Expect the call to the withdraw function by the beneficiary to be reverted.
 
+### Implementation Considerations
+
+1. Use `loadFixture` to maintain the state of the network before each test.
+2. Use Luxon to convert Unix timestamp to UTC DateTime.
+3. Use `ethers.provider.getBalance()` to get the current balance of the owner and the beneficiary.
+4. Use `time.increaseTo()` from Hardhat Network Helpers to move time forward.
+5. Use `.to.be.revertedWith()` to assert a revert happens with the specified message.
+6. Use `.to.changeEtherBalance()` to assert a balance change on the specified account.
+7. Use `.connect()` to call a function with a different account.
+
 ### References
 
 1. [Time-dependent tests with Hardhat?](https://ethereum.stackexchange.com/questions/86633/time-dependent-tests-with-hardhat/92906)

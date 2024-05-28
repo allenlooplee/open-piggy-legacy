@@ -35,6 +35,8 @@ This smart contract allows a specified beneficiary to withdraw its balance when 
 
 ### Test Cases
 
+To run the tests, navigate to your project folder in the terminal and execute `npm run test`.
+
 1. **Deployment**
    - It should deploy and set the state when the owner deploys the smart contract.
      - Expect the owner variable to be the address of the owner.
@@ -125,7 +127,7 @@ When deploying the PiggyLegacy contract with Hardhat Ignition, follow the below 
 
 1. Open ./ignition/modules/PiggyLegacy.js file.
 2. Change the values of `beneficiary`, `withdrawalPeriod` and `initialAmount` in the module and save the changes.
-3. Run `npx hardhat ignition deploy ./ignition/modules/PiggyLegacy.js` in the terminal under the project folder.
+3. Navigate to your project folder in the terminal and execute `npm run deploy`.
 
 This will deploy the smart contract to an in-memory instance of Hardhat Network on your local machine.
 

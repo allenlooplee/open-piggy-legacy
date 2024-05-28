@@ -131,6 +131,8 @@ When deploying the PiggyLegacy contract with Hardhat Ignition, follow the below 
 
 This will deploy the smart contract to an in-memory instance of Hardhat Network on your local machine.
 
+To deploy the smart contract to a live network, follow [Hardhat documentation](https://hardhat.org/tutorial/deploying-to-a-live-network) or simply paste the code into [Remix IDE](https://remix-ide.readthedocs.io/en/latest/run.html) for easy deployment.
+
 ### References
 
 1. [Quick start](https://hardhat.org/ignition/docs/getting-started#quick-start)

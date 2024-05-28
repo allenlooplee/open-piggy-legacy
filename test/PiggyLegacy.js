@@ -20,6 +20,7 @@ describe("PiggyLegacy", function() {
     describe("Deployment", () => {
         it("should deploy and set the state when the owner deploys the smart contract", async function() {
             const { legacy, initialAmount, owner, beneficiary } = await loadFixture(deployLegacyFixture);
+
             const lastCheckInUTC = DateTime.fromSeconds(Number(await legacy.lastCheckInTime())).setZone("UTC");
             const todayUTC = DateTime.utc();
 
@@ -168,6 +169,14 @@ describe("PiggyLegacy", function() {
             await expect(legacy.terminate()).to.be.revertedWith("Contract already terminated");
             await expect(legacy.connect(beneficiary).canWithdraw()).to.be.revertedWith("Contract already terminated");
             await expect(legacy.connect(beneficiary).withdraw()).to.be.revertedWith("Contract already terminated");
+        });
+
+        it("should revert when non-owner terminates it", async function() {
+            const { legacy, beneficiary, initialAmount } = await loadFixture(deployLegacyFixture);
+
+            await expect(legacy.connect(beneficiary).terminate()).to.be.revertedWith("Owner only");
+            expect(await legacy.isActive()).to.be.true;
+            expect(await ethers.provider.getBalance(legacy.target)).to.equal(initialAmount);
         });
     });
 });

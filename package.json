@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "hardhat test"
+    "clean": "hardhat clean",
+    "test": "hardhat test test/PiggyLegacy.js",
+    "coverage": "hardhat coverage --testfiles test/PiggyLegacy.js",
+    "deploy": "hardhat ignition deploy ignition/modules/PiggyLegacy.js"
   },
   "author": "Allen Lee",
   "license": "MIT",
